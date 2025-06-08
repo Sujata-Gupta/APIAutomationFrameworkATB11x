@@ -1,5 +1,6 @@
 package org.testing.modules;
 
+import com.github.javafaker.Book;
 import com.github.javafaker.Faker;
 import com.google.gson.Gson;
 import org.testing.pojos.request.Auth;
@@ -108,6 +109,38 @@ public class PayloadManager {
         gson=new Gson();
         TokenResponse tokenResponse1=gson.fromJson(tokenResponse,TokenResponse.class);
         return tokenResponse1.getToken();
+    }
+
+    public Booking getResponseFromJSON(String getResponse)
+    {
+        gson=new Gson();
+        Booking booking=gson.fromJson(getResponse,Booking.class);
+        return booking;
+
+    }
+
+    public String fullUpdatePayloadAsString()
+    {
+        Booking booking = new Booking();
+        booking.setFirstname("Sujata");
+        booking.setLastname("Gupta");
+        booking.setTotalprice(4562);
+        booking.setDepositpaid(true);
+
+        Bookingdates bookingdates = new Bookingdates();
+        bookingdates.setCheckin("2024-5-21");
+        bookingdates.setCheckout("2024-5-25");
+
+        booking.setBookingdates(bookingdates);
+        booking.setAdditionalneeds("Breakfast");
+
+        System.out.println(booking);
+        // java to json
+        gson = new Gson();
+        String jsonStringBooking = gson.toJson(booking);
+        return jsonStringBooking;
+
+
     }
 }
 

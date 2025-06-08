@@ -27,6 +27,8 @@ public class TestCreateBooking extends BaseTest {
 
         assertActions.verifyStringKey(bookingResponse.getBooking().getFirstname(),"Sujata");
         assertActions.verifyStringKeyNotNull(bookingResponse.getBookingid());
+        System.out.println("Booking ID returned from API: " + bookingResponse.getBookingid());
+
         //assertActions.verifyStatusCode(response.getStatusCode(),200);
         //validatableResponse.statusCode(200);
 
